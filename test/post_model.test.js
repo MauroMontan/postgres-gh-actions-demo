@@ -1,5 +1,4 @@
-
-import Post from "./app/models/post_model.js";
+import Post from "../app/models/post_model.js";
 
 
 describe("test suit for post model",()=>{
@@ -11,7 +10,6 @@ describe("test suit for post model",()=>{
         content: "content",
         published: false
     });
-
-        expect(data).toBe(instanceof Post );
+        expect(data).toBeInstanceOf(Post);
     });
 });
