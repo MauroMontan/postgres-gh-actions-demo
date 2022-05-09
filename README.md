@@ -34,4 +34,8 @@ npx prisma studio
 ```bash
 npm run dev
 ```
+- run jest test
 
+```bash
+npm run test
+```
