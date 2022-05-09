@@ -6,11 +6,12 @@
   "main": "main.js",
   "scripts": {
     "test": "NODE_OPTIONS=--experimental-vm-modules npx jest",
+    "seed":"node seed.js",
     "dev": "nodemon app/main.js"
   },
   "author": "MauroMontan",
   "license": "ISC",
-  "devDependencies":{
+  "devDependencies": {
     "prisma": "^3.13.0"
   },
   "dependencies": {
