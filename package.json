@@ -1,0 +1,21 @@
+{
+  "name": "postgres_gh_actions",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "postgres demo app for github actions",
+  "main": "main.js",
+  "scripts": {
+    "test": "NODE_OPTIONS=--experimental-vm-modules npx jest",
+    "dev": "nodemon app/main.js"
+  },
+  "author": "MauroMontan",
+  "license": "ISC",
+  "devDependencies":{
+    "prisma": "^3.13.0"
+  },
+  "dependencies": {
+    "@prisma/client": "^3.13.0",
+    "express": "^4.18.1",
+    "nodemon": "^2.0.16"
+  }
+}
