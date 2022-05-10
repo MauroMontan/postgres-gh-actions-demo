@@ -1,0 +1,45 @@
+# .github/workflows/test.yaml
+name: test
+on: push
+
+
+jobs:
+  # Este es el nombre del conteneder del job
+  #
+  test:
+    # Este el es entorno que el que se ejecutara nuestor job
+    runs-on: ubuntu-latest
+    # Aque es donde se colocan y configuran nuestros service containers
+    services:
+      postgres:
+        # imágen oficial de docker
+        image: postgres
+        # Aquí va el usuario y contraseña de postgres
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          # opciones para que postgres inicie correctamente
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          # aquí se coloca el puerto donde corre postgres
+          - 5432:5432
+    env:
+      #aquí colocamos nuestras variables de entorno
+      DATABASE_URL: postgresql://postgres:postgres@localhost:5432/explorers_api?schema=public
+      PORT: 3030
+    steps:
+      # Aquí colocamos las instrucciones de nuestro proyecto
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          # version de node en la que correra el test
+          node-version: '18.x'
+      - run: npm install
+      - run: npx prisma migrate dev --name init
+      - run: npm run seed
+      - run: npm run test
+

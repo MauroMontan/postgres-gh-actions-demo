@@ -6,8 +6,8 @@ const prisma = new Prisma.PrismaClient();
 
 const main = async () => {
     const data = new Post({
-        title: "post title",
-        author: "random author",
+        title: "title",
+        author: "author",
         authorId: 1,
         content: "content",
         published: false
